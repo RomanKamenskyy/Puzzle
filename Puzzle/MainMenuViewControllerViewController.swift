@@ -19,12 +19,10 @@ class MainMenuViewController: UIViewController, UIImagePickerControllerDelegate,
         super.viewDidLoad()
         view.backgroundColor = .white
         previewImageView.contentMode = .scaleAspectFit
-        
         setupUI()
     }
     
     private func setupUI() {
-
         previewImageView.contentMode = .scaleAspectFit
         previewImageView.layer.borderColor = UIColor.lightGray.cgColor
         previewImageView.layer.cornerRadius = 10
@@ -58,7 +56,6 @@ class MainMenuViewController: UIViewController, UIImagePickerControllerDelegate,
         startButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-        
             previewImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             previewImageView.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 20),
             previewImageView.widthAnchor.constraint(equalToConstant: 200),
@@ -105,7 +102,6 @@ class MainMenuViewController: UIViewController, UIImagePickerControllerDelegate,
                 return
             }
             DispatchQueue.main.async {
-              
                 self?.previewImageView.image = image
                 self?.selectedImage = image
             }
@@ -120,7 +116,6 @@ class MainMenuViewController: UIViewController, UIImagePickerControllerDelegate,
             present(alert, animated: true, completion: nil)
             return
         }
-
         let gameVC = GameViewController()
         gameVC.imageToUse = selectedImage
         navigationController?.pushViewController(gameVC, animated: true)

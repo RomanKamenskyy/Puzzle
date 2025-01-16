@@ -1,5 +1,5 @@
 //
-//  MainMenuViewControllerViewController.swift
+//  GameViewController.swift
 //  Puzzle
 //
 //  Created by roman on 1/10/25.
@@ -36,12 +36,12 @@ class GameViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
         
         loadImage()
         
         UIView.animate(withDuration: 1.5) {
-            //self.updateTileButtons()
             self.shufflePuzzle()
         }
     }
@@ -63,7 +63,7 @@ class GameViewController: UIViewController {
     
     func loadImage() {
         if let image = imageToUse {
-                print("The image has been successfully uploaded: \(image)") // Печать для проверки
+                print("The image has been successfully uploaded: \(image)")
                 splitImageIntoTiles(image: image)
             } else {
                 print("There is no image to play")

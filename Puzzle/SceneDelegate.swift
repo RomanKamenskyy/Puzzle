@@ -13,15 +13,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-           // Используйте этот метод для настройки начального view controller
+         
            guard let windowScene = (scene as? UIWindowScene) else { return }
            
            window = UIWindow(windowScene: windowScene)
            
-           let mainMenuVC = MainMenuViewController()  // Ваш основной экран
-           let navigationController = UINavigationController(rootViewController: mainMenuVC)  // Обертываем его в UINavigationController
-           window?.rootViewController = navigationController  // Устанавливаем UINavigationController как корневой
-           window?.makeKeyAndVisible()  // Делаем окно видимым
+           let mainMenuVC = MainMenuViewController()
+           let navigationController = UINavigationController(rootViewController: mainMenuVC)
+           window?.rootViewController = navigationController
+           window?.makeKeyAndVisible()
        }
 
 
