@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 struct Tile {
     let id: Int
     var currentFrame: CGRect
@@ -14,8 +15,9 @@ struct Tile {
     let image: UIImage
     var isLocked: Bool = false
     var name: String
-    var associatedButton: UIButton?  
+    var associatedButton: UIButton?
 }
+
 class GameViewController: UIViewController {
     var puzzleImageView: UIImageView!
     var puzzleGrid: UIView!
@@ -39,6 +41,7 @@ class GameViewController: UIViewController {
         loadImage()
         
         UIView.animate(withDuration: 1.5) {
+            //self.updateTileButtons()
             self.shufflePuzzle()
         }
     }
@@ -120,9 +123,7 @@ class GameViewController: UIViewController {
 
         let puzzleGridWidth = puzzleGrid.bounds.width
         let puzzleGridHeight = puzzleGrid.bounds.height
- 
         let gridSize = Int(sqrt(Double(tiles.count)))
-       
         let tileWidth = puzzleGridWidth / CGFloat(gridSize)
         let tileHeight = puzzleGridHeight / CGFloat(gridSize)
     
@@ -189,7 +190,6 @@ class GameViewController: UIViewController {
     }
 
     @objc func tileTapped(_ sender: UIButton) {
-        
         if let firstTile = firstSelectedTile {
             if firstTile != sender {
                 swapTiles(firstTile, sender)
@@ -234,10 +234,8 @@ class GameViewController: UIViewController {
                 }
                 return
             }
-
             swapTiles(draggedTile, targetTile)
             lockCorrectTiles()
-            checkCompletion()
             
         default:
             break
@@ -263,7 +261,7 @@ class GameViewController: UIViewController {
     
     func checkCompletion() {
         var isCompleted = true
-        
+
         for (index, tile) in tiles.enumerated() {
             if index != tile.correctIndex {
                 isCompleted = false
@@ -271,7 +269,7 @@ class GameViewController: UIViewController {
             }
         }
         if isCompleted {
-            UIView.animate(withDuration: 1.3, animations: {
+            UIView.animate(withDuration: 1, animations: {
                     for button in self.tileButtons {
                         button.layer.borderWidth = 0
                     }
